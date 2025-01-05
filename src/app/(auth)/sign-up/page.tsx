@@ -11,6 +11,7 @@ import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
@@ -117,13 +118,14 @@ export default function SignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Username</FormLabel>
+                  <FormControl>
                   <Input
                     {...field}
                     onChange={(e) => {
                       field.onChange(e);
                       debounced(e.target.value);
                     }}
-                  />
+                  /></FormControl>
                   {isCheckingUsername && <Loader2 className="animate-spin" />}
                   {!isCheckingUsername && usernameMessage && (
                     <p
@@ -146,7 +148,9 @@ export default function SignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
+                  <FormControl>
                   <Input {...field} name="email" />
+                  </FormControl>
                   <p className='text-muted text-gray-500 text-sm'>We will send you a verification code</p>
                   <FormMessage />
                 </FormItem>
@@ -159,7 +163,9 @@ export default function SignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
+                  <FormControl>
                   <Input type="password" {...field} name="password" />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
